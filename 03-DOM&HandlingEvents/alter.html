@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<title>Pink Floyd</title>
@@ -20,8 +20,31 @@
 		and psychedelic music.</p>
 		
 		<script>
-			// a JavaScript code here ...
-			
+            document.getElementsByTagName('h1')[0].addEventListener('click', function() {
+                this.innerText = `${this.innerText} (Part 2)`
+            })
+
+            document.getElementsByTagName('h3')[0].addEventListener('click', function () {
+                document.getElementsByTagName('p')[1].style.visibility = "visible";
+            })
+
+            document.getElementsByTagName('p')[0].addEventListener('click', function () {
+                this.style.fontStyle = "italic";
+            })
+
+            document.addEventListener("dblclick", function() {
+                document.body.style.backgroundColor = "yellow";
+            })
+
+            document.getElementsByTagName('p')[0].addEventListener('copy', function () {
+                alert('no stealing, Copyright')
+            })
+
+            document.getElementsByTagName('p')[1].addEventListener('click', function () {
+                var image = document.createElement("img");
+                image.setAttribute("src", "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg")
+                document.getElementsByTagName("body")[0].appendChild(image); 
+            })
 		</script>
 	</body>
 </html>
