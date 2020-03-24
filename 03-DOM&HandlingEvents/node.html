@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<title>Create DOM elements</title>
@@ -6,7 +6,30 @@
 	</head>
 	<body>
 		<script>
-			// a JavaScript code here ...
+            createTable = function() {
+                var body = document.getElementsByTagName('body')[0];
+                var table = document.createElement("table");
+                table.setAttribute('border', '1');
+                table.setAttribute('width', '250');
+                var text = 1
+
+                var tbody = document.createElement('tbody');
+
+                for (var i = 0; i < 2; i++) {
+                    var row = document.createElement('tr');
+                    for (var j = 0; j < 2; j++) {
+                        var cell = document.createElement('td');
+                        cell.setAttribute('align', 'center');
+                        cell.innerText = text++
+                        row.appendChild(cell)
+                    }
+                    tbody.appendChild(row);
+                }
+
+                table.appendChild(tbody);
+                body.appendChild(table)
+            }
+            createTable();
 			
 		</script>
 	</body>

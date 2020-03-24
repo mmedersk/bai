@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
     <title>Shopping List</title>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -20,8 +21,16 @@
     </ol>
 
     <script>
-    	// a JavaScript code here ...
+        document.getElementsByTagName('button')[0].addEventListener('click', function() {
+            var text = document.getElementsByTagName('input')[0].value;
+            var listItem = document.createElement("li");
+            listItem.innerText = text;
+            document.getElementsByTagName('ol')[0].appendChild(listItem)
+        });
 
+        $("ol").dblclick(function(e) {
+            e.target.remove()
+        });
     </script>
 </body>
 

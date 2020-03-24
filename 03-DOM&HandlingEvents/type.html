@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<title>Typing test</title>
@@ -20,12 +20,19 @@
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
-		<textarea rows="15" cols="50"></textarea><br>
+    <textarea onclick="startTimer()" rows="15" cols="50"></textarea><br>
 		
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
+    <script>
+        // a JavaScript code here ...
+        function startTimer() {
+            setTimeout(() => {
+                    const text = document.getElementsByTagName('textarea')[0];
+                    const child = document.createElement('p');
+                    child.innerText = `Words: ${text.value.split(' ').length} Chars: ${text.value.length}`;
+                    document.getElementsByTagName('body')[0].appendChild(child);
+            }, 2000);
+        }
+    </script>
 		
 	</body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -17,8 +17,14 @@
 	<script>
 		// a JavaScript code here ...
 		var university = "Cracow University of Economics";
-		var address = "Rakowicka 27, Krakow, POLAND";
+        var address = "Rakowicka 27, Krakow, POLAND";
 
+
+        document.getElementsByTagName('button')[0].addEventListener('click', function() {
+            document.getElementsByTagName('input')[0].value = university;
+            document.getElementsByTagName('input')[1].value = address;
+
+        })
 	</script>
 </body>
 
