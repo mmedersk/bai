@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<title>Student</title>
@@ -7,12 +7,23 @@
 	<body>
 		<h1>Student</h1>
 		<p>Open a console and then click the button</p>
-		<input type="button" value="Display student's data">
+		<input type="button" value="Display student's data" onclick="fetchData()">
 		<p id="personalData"></p>
 
 		<script>
+            function fetchData() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        var item = JSON.parse(xhr.responseText)
+                        document.getElementById("personalData").innerHTML = `${item.name} ${item.surname}`;
+                    }
+                };
 
-		</script>
+                xhr.open('GET', 'file:///C:/Users/RWXG48/Desktop/Priv/UNI/BAI/04-JSON&DataTransfer/me.json');
+                xhr.send();
+            }
+        </script>
 
 	</body>
 </html>
