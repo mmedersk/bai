@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>People</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <input type="button" value="Get people" onclick="GetData()">
+    <p id="people"></p>
+
+
+    <script>
+        function GetData() {
+            var xhr1 = new XMLHttpRequest();
+                xhr1.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        var item = JSON.parse(xhr1.responseText)
+                        item.forEach(element => console.log(element));
+                        document.getElementById("people").innerHTML = GetPeople(item);
+                    }
+                };
+
+            xhr1.open('GET', 'https://mmedersk.github.io/people.json');
+            xhr1.send();
+        }
+
+        function GetPeople(arr) {
+            var result = '';
+            for (i = 0; i < arr.length; i++)
+            {
+                result += `${i + 1}. ${arr[i].name} ${arr[i].surname.toUpperCase()}, ${arr[i].country} <br>`;
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>

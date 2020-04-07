@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency rates</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<input type="button" value="Get currency rates" onclick="GetData()">
+<p id="GBP"></p>
+<p id="EUR"></p>
+<p id="USD"></p>
+
+<script>
+    function GetData() {
+        var xhr1 = new XMLHttpRequest();
+        xhr1.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                var item = JSON.parse(xhr1.responseText)
+                document.getElementById("GBP").innerHTML = `1 GBP = ${item.rates[0].mid} ZL`;
+            }
+        };
+
+        var xhr2 = new XMLHttpRequest();
+        xhr2.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var item = JSON.parse(xhr2.responseText)
+                document.getElementById("EUR").innerHTML = `1 EUR = ${item.rates[0].mid} ZL`;
+            }
+        };
+
+        var xhr3 = new XMLHttpRequest();
+        xhr3.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var item = JSON.parse(xhr3.responseText)
+                document.getElementById("USD").innerHTML = `1 USD = ${item.rates[0].mid} ZL`;
+            }
+        };
+
+        xhr1.open('GET', 'http://api.nbp.pl/api/exchangerates/rates/a/gbp?format=json');
+        xhr1.send();
+
+        xhr2.open('GET', 'http://api.nbp.pl/api/exchangerates/rates/a/eur?format=json');
+        xhr2.send();
+
+        xhr3.open('GET', 'http://api.nbp.pl/api/exchangerates/rates/a/usd?format=json');
+        xhr3.send();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DataTable</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+</head>
+<body>
+<table id="example" class="display" style="width:100%">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Country</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+</table>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({ 'cache': true });
+        $('#example').DataTable( {
+            "ajax": {
+                "cache": "true",
+                "url": "https://mmedersk.github.io/people.json",
+                "dataSrc": ""
+            },
+            "columns": [
+                { "data": "name" },
+                { "data": "surname" },
+                { "data": "age" },
+                { "data": "country" },
+                { "data": "email" }
+            ]
+        } );
+    } );
+</script>
+</body>
+</html>

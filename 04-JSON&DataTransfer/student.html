@@ -7,11 +7,11 @@
 	<body>
 		<h1>Student</h1>
 		<p>Open a console and then click the button</p>
-		<input type="button" value="Display student's data" onclick="fetchData()">
+		<input type="button" value="Display student's data" onclick="GetData()">
 		<p id="personalData"></p>
 
 		<script>
-            function fetchData() {
+            function GetData() {
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
@@ -20,7 +20,7 @@
                     }
                 };
 
-                xhr.open('GET', 'file:///C:/Users/RWXG48/Desktop/Priv/UNI/BAI/04-JSON&DataTransfer/me.json');
+                xhr.open('GET', 'https://mmedersk.github.io/me.json');
                 xhr.send();
             }
         </script>
