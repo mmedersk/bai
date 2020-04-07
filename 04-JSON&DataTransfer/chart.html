@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DataTable</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+</head>
+<body>
+    <canvas id="myChart" />
+
+    <script>
+        var jsonData = $.ajax({
+            url: 'http://api.nbp.pl/api/cenyzlota/last/10?format=json',
+            dataType: 'json',
+        }).done(function (results) {
+            var labels = [], data = [];
+            results.forEach(function (packet) {
+                labels.push(packet.data);
+                data.push(packet.cena);
+            });
+
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Cena zlota',
+                        data: data,
+                        backgroundColor: 'rgba(59, 219, 31, 0.5)',
+                        borderColor: 'rgba(0, 0, 0, 1)',
+                        borderWidth: 2
+                    }],
+                }
+            });
+        });
+    </script>
+</body>
+</html>
