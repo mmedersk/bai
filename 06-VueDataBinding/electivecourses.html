@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="checkbox" id= "BAI" value= "BAI" v-model="kursy">
+    <label for="BAI">Bogate aplikacje internetowe</label>
+    <input type="checkbox" id="MIHE" value="MIHE" v-model="kursy">
+    <label for="MIHE">Marketing i handel elektroniczny</label>
+    <input type="checkbox" id="MOP" value="MOP" v-model="kursy">
+    <label for="MOP">Metody optymalizacji procesów</label>
+    <input type="checkbox" id="PK" value="PK" v-model="kursy">
+    <label for="PK">Programowanie kreatywne</label>
+    <input type="checkbox" id="JO" value="JO" v-model="kursy">
+    <label for="JO">Język obcy</label>
+
+    <p>Wybrano: {{zaznaczone}}</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        kursy: []
+      },
+      computed: {
+        zaznaczone: function() {
+            return this.kursy.length;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

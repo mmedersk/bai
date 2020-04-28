@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>CV</h1>
+    <span>Imie:</span>
+    <input type="text" v-model="Imie"><br>
+    <span>Nazwisko:</span>
+    <input type="text" v-model="Nazwisko"><br>
+    <span>Wiek:</span>
+    <input type="number" v-model="Wiek"><br>
+    <span>Plec:</span>
+    <select v-model="Plec">
+        <option disabled>Wybierz</option>
+        <option>M</option>
+        <option>K</option>
+    </select><br>
+    <span>Wyksztalcenie:</span>
+    <input type="radio" id= "Brak" value= "Brak" v-model="Wyksztalcenie">
+    <label for="Brak">Brak</label>
+    <input type="radio" id= "Podst" value= "Podst" v-model="Wyksztalcenie">
+    <label for="Podst">Podstawowe</label>
+    <input type="radio" id= "Sred" value= "Sred" v-model="Wyksztalcenie">
+    <label for="Sred">Srednie</label>
+    <input type="radio" id= "Wyz" value= "Wyz" v-model="Wyksztalcenie">
+    <label for="Wyz">Wyzsze</label><br>
+    <span>Umiejetnosci:</span>
+    <input type="checkbox" id= "Komp" value= "Komp" v-model="Umiejetnosci">
+    <label for="Komp">Obsluga komputera</label>
+    <input type="checkbox" id= "PJ" value= "PJ" v-model="Umiejetnosci">
+    <label for="PJ">Prawo jazdy</label>
+    <input type="checkbox" id= "Kreat" value= "Kreat" v-model="Umiejetnosci">
+    <label for="Kreat">Kreatywnosc</label>
+    <input type="checkbox" id= "PwZ" value= "PwZ" v-model="Umiejetnosci">
+    <label for="PwZ">Praca w zespole</label><br>
+    <button  @click="Zapisz()">Zapisz</button>
+    <button  @click="Odczytaj()">Odczytaj</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        Imie: '',
+        Nazwisko: '',
+        Wiek: '',
+        Plec: '',
+        Wyksztalcenie: '',
+        Umiejetnosci: [],
+        form: {}
+      },
+      methods: {
+        Zapisz: function() {
+            debugger;
+            this.form.Imie = this.Imie;
+            this.form.Nazwisko = this.Nazwisko;
+            this.form.Wiek = this.Wiek;
+            this.form.Plec = this.Plec;
+            this.form.Wyksztalcenie = this.Wyksztalcenie;
+            this.form.Umiejetnosci = this.Umiejetnosci;
+            localStorage.setItem('form', JSON.stringify(this.form));
+        },
+        Odczytaj: function() {
+            debugger;
+            const dataLoaded = JSON.parse(localStorage.getItem("form"));
+            this.Imie = dataLoaded.Imie;
+            this.Nazwisko = dataLoaded.Nazwisko;
+            this.Wiek = dataLoaded.Wiek;
+            this.Plec = dataLoaded.Plec;
+            this.Wyksztalcenie = dataLoaded.Wyksztalcenie;
+            this.Umiejetnosci = dataLoaded.Umiejetnosci;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
