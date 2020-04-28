@@ -2,8 +2,14 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
 </head>
 <body>
+  <div id="app">
+    <canvas id="myChart"></canvas>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -30,6 +36,37 @@
             popularity: 7.37
           }
         ] 
+      },
+      computed : {
+        lang() {
+          return this.films.map(item => {
+            return item.language
+          })
+        },
+        popularity() {
+          return this.films.map(item => {
+            return item.popularity
+          })
+        },
+        getChart() {
+          var ctx = document.getElementById('myChart');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: this.lang,
+              datasets: [{
+                label: 'Popularnosc',
+                data: this.popularity,
+                backgroundColor: 'rgba(59, 219, 31, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2
+              }],
+            }
+          });
+        }
+      },
+      mounted() {
+        this.getChart;
       }
     });
   </script>
