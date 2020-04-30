@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <counter></counter>
+    </div>
+
+    <script>
+        Vue.component('counter', {
+            data() {
+                return {
+                    licznik: 0,
+                }
+            },
+            methods: {
+                dodaj: function() {
+                    this.licznik++
+                },
+                odejmij: function() {
+                    this.licznik--
+                }
+            },
+            template : `
+                <div>
+                    <button  @click="dodaj()">dodaj</button>
+                    <button  @click="odejmij()">odejmij</button><br>
+                    <p>{{licznik}}</p>
+                </div>
+            `
+        })
+
+        var app = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+</html>

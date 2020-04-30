@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <api></api>
+    </div>
+
+    <script>
+        Vue.component('api', {
+            data() {
+                return {
+                    joke: '',
+                }
+            },
+            methods: {
+                GetJoke() {
+                    const xhr = new XMLHttpRequest();
+                    const comp = this;
+                    xhr.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            const response = JSON.parse(xhr.response);
+                            comp.joke = response.value.joke;
+                        }
+                    };
+                    xhr.open('GET', 'http://api.icndb.com/jokes/random');
+                    xhr.send();
+                },
+            },
+            mounted(){
+                this.GetJoke()
+            },
+            template : 
+            `
+                <div>
+                    <h4>{{joke}}</h4>
+                </div>
+            `
+        })
+
+        var app = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+</html>

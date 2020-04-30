@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Menace></Menace>
+        <Soc></Soc>
+        <Friday></Friday>
+    </div>
+
+  <script>
+    Vue.component('Menace', {
+        template : `
+        <div>
+            <h1>Don't Be a Menace to South Central While Drinking Your Juice in the Hood</h1>
+            <h2>Paris Barclay</h2>
+            <p>1996</p>
+        </div>
+        `
+    })
+
+    Vue.component('Soc', {
+        template : `
+        <div>
+            <h1>Straight Outta Compton</h1>
+            <h2>F. Gary Gray</h2>
+            <p>2015</p>
+        </div>
+        `
+    })
+
+    Vue.component('Friday', {
+        template : `
+        <div>
+            <h1>Friday </h1>
+            <h2>F. Gary Gray</h2>
+            <p>1995</p>
+        </div>
+        `
+    })
+
+
+    var app = new Vue({
+        el: '#app'
+    });
+  </script>
+</body>
+</html>
